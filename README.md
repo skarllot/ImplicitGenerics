@@ -39,7 +39,7 @@ You should now be ready to use the library types on your project.
 
 ## Guide
 
-Quick To understand the scenarios covered by this library, some examples are given.
+To understand the scenarios covered by this library, some examples are given.
 
 ### Registering adapter on the dependency injector
 
