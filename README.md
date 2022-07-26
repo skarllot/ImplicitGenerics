@@ -1,8 +1,8 @@
-# Implicit Generics [![Nuget](https://img.shields.io/nuget/v/raiqub.implicitgenerics)](https://www.nuget.org/packages/raiqub.implicitgenerics)
+# Implicit Generics [![Nuget](https://img.shields.io/nuget/v/Raiqub.ImplicitGenerics)](https://www.nuget.org/packages/Raiqub.ImplicitGenerics)
 
 _Provides a mechanism that allows generic type parameter to be inferred implicitly._
 
-[🏃 Quickstart](#quickstart) &nbsp; | &nbsp; [📗 Guide](#guide) &nbsp; | &nbsp; [📦 NuGet](https://www.nuget.org/packages/raiqub.implicitgenerics)
+[🏃 Quickstart](#quickstart) &nbsp; | &nbsp; [📗 Guide](#guide) &nbsp; | &nbsp; [📦 NuGet](https://www.nuget.org/packages/Raiqub.ImplicitGenerics)
 
 <hr />
 
