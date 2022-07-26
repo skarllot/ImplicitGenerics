@@ -9,7 +9,7 @@ public static class ParamTest
     public static void OfTypeShouldCast()
     {
         var array = new object[] { "Hi", 10, DateTime.Now, StringComparison.Ordinal };
-        var result = array.OfType(Param.OutOf<string>());
+        var result = array.OfType(OutParam.Of<string>());
 
         result.Should().Equal("Hi");
     }
@@ -18,7 +18,7 @@ public static class ParamTest
     public static void CastShouldCast()
     {
         ReadOnlySpan<char> span = stackalloc char[] { 'A', 'B', 'C', 'D', 'E' };
-        var result = span.Cast(Param.OutOf<ushort>());
+        var result = span.Cast(OutParam.Of<ushort>());
 
         result.ToArray().Should().Equal(65, 66, 67, 68, 69);
     }
@@ -30,7 +30,7 @@ public static class ParamTest
             .AddAdapter<int, float, Int32ToFloatAdapter>()
             .BuildServiceProvider(true);
         var provider2 = new ServiceCollection()
-            .AddAdapter(Param.OutOf<Int32ToFloatAdapter>())
+            .AddAdapter(OutParam.Of<Int32ToFloatAdapter>())
             .BuildServiceProvider(true);
 
         var service1 = provider1.GetRequiredService<IAdapter<int, float>>();
@@ -44,6 +44,16 @@ public static class ParamTest
 
         service2.Should().BeOfType<Int32ToFloatAdapter>();
         result2.Should().Be(20);
+    }
+
+    [Fact]
+    public static void DownCastDictionaryValuesShouldReturnValidDictionaryValues()
+    {
+        var dict = new Dictionary<string, object> { { "key1", "value1" }, { "key2", "value2" }, { "key3", "value3" } };
+        var result = dict.DownCastValues(OutParam.Of<string>());
+
+        result.Should().ContainKeys("key1", "key2", "key3");
+        result.Should().ContainValues("value1", "value2", "value3");
     }
 
     private static IEnumerable<TOut> OfType<TIn, TOut>(this IEnumerable<TIn> enumerable, IOutParam<TOut> outType)
@@ -91,5 +101,19 @@ public static class ParamTest
         IOutParam<IAdapter<TIn, TOut>> outParam)
     {
         return services.AddSingleton(typeof(IAdapter<TIn, TOut>), outParam.Type);
+    }
+
+    private static IDictionary<TKey, TOther> DownCastValues<TKey, TValue, TOther>(
+        this IDictionary<TKey, TValue> dictionary,
+        IOutParam<TOther> outParam)
+        where TKey : notnull
+        where TValue : class
+        where TOther : class, TValue
+    {
+        outParam.DebugIfNull();
+
+        return dictionary
+            .Select(pair => (pair.Key, Value: (TOther)pair.Value))
+            .ToDictionary(it => it.Key, it => it.Value);
     }
 }

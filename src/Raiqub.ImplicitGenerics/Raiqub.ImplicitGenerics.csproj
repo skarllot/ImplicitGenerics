@@ -5,6 +5,11 @@
         <LangVersion>10</LangVersion>
         <Nullable>enable</Nullable>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <Title>Provides a mechanism that allows generic type parameter to be inferred implicitly</Title>
+        <Description>
+            Sometimes when developing generic methods extensions it needs additional generic parameter types, and when any of types can not be inferred then all generic parameter types must be specified.
+            This library brings IOutParam&lt;out T&gt; interface and OutParam class to help developers create method parameters that lets the compiler infer the type of the generic parameter.
+        </Description>
     </PropertyGroup>
 
     <ItemGroup>
@@ -21,4 +26,5 @@
     <ItemGroup Condition="'$(TargetFramework)' == 'netstandard1.0'">
         <PackageReference Include="System.Diagnostics.Contracts" Version="4.3.0"/>
     </ItemGroup>
+
 </Project>
