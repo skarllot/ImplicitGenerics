@@ -1,4 +1,4 @@
-﻿namespace Raiqub.Any;
+﻿namespace Raiqub.ImplicitGenerics;
 
 internal sealed class OutParam<T> : IOutParam<T>
 {

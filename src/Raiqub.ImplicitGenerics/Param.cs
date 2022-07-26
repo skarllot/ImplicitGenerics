@@ -1,4 +1,4 @@
-﻿namespace Raiqub.Any;
+﻿namespace Raiqub.ImplicitGenerics;
 
 /// <summary>A factory to create <see cref="IOutParam{T}"/> instances.</summary>
 public static class Param

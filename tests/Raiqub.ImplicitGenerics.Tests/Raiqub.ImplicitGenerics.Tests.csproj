@@ -23,7 +23,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\Raiqub.Any\Raiqub.Any.csproj" />
+      <ProjectReference Include="..\..\src\Raiqub.ImplicitGenerics\Raiqub.ImplicitGenerics.csproj" />
     </ItemGroup>
 
 </Project>

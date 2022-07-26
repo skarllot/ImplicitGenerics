@@ -1,4 +1,4 @@
-﻿namespace Raiqub.Any;
+﻿namespace Raiqub.ImplicitGenerics;
 
 /// <summary>
 /// Represents a covariant generic type parameter, allowing implicit generics.

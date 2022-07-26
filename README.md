@@ -1,2 +1,2 @@
-# Any
-Provides a mechanism allowing generic type to be inferred implicitly
+# Implicit Generics
+Provides a mechanism that allows generic type parameter to be inferred implicitly.

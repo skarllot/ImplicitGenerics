@@ -14,9 +14,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EA88C78C-95F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{83E0C179-5FC6-4121-B287-F290EF0BD6F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raiqub.Any", "src\Raiqub.Any\Raiqub.Any.csproj", "{56561893-B3BA-41E7-917F-314AD2BD388D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raiqub.ImplicitGenerics", "src\Raiqub.ImplicitGenerics\Raiqub.ImplicitGenerics.csproj", "{56561893-B3BA-41E7-917F-314AD2BD388D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raiqub.Any.Tests", "tests\Raiqub.Any.Tests\Raiqub.Any.Tests.csproj", "{FE6DC420-859A-491F-8FE0-3DB852AC0EC7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Raiqub.ImplicitGenerics.Tests", "tests\Raiqub.ImplicitGenerics.Tests\Raiqub.ImplicitGenerics.Tests.csproj", "{FE6DC420-859A-491F-8FE0-3DB852AC0EC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

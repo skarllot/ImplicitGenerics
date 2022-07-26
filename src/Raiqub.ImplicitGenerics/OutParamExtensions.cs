@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
-namespace Raiqub.Any;
+namespace Raiqub.ImplicitGenerics;
 
 /// <summary>Provides extension methods for <see cref="IOutParam{T}"/> objects.</summary>
 [EditorBrowsable(EditorBrowsableState.Never)]

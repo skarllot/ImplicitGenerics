@@ -1,7 +1,7 @@
 using System.Runtime.InteropServices;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Raiqub.Any.Tests;
+namespace Raiqub.ImplicitGenerics.Tests;
 
 public static class ParamTest
 {
