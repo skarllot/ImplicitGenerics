@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
 
 namespace Raiqub.ImplicitGenerics;
 
@@ -9,15 +10,18 @@ namespace Raiqub.ImplicitGenerics;
 [EditorBrowsable(EditorBrowsableState.Never)]
 public static class OutParamExtensions
 {
+#pragma warning disable CS8777 // Parameter must have a non-null value when exiting
     /// <summary>Displays a debug message if <paramref name="outType"/> is null.</summary>
     /// <param name="outType">The instance to validate as non-null.</param>
     /// <typeparam name="T">The generic type.</typeparam>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     [Conditional("DEBUG")]
+    [ContractAnnotation("outType:null=>halt")]
     public static void DebugIfNull<T>([NotNull] this IOutParam<T>? outType)
     {
         Debug.Assert(outType is not null);
     }
+#pragma warning restore CS8777
 
     /// <summary>
     /// Throws an <see cref="ArgumentNullException"/> if <paramref name="outType"/> is null.
@@ -26,6 +30,7 @@ public static class OutParamExtensions
     /// <param name="paramName">The name of the parameter with which argument corresponds.</param>
     /// <typeparam name="T">The generic type.</typeparam>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
+    [ContractAnnotation("outType:null=>halt")]
     public static void ThrowIfNull<T>(
         [NotNull] this IOutParam<T>? outType,
         [CallerArgumentExpression("outType")] string? paramName = null)
