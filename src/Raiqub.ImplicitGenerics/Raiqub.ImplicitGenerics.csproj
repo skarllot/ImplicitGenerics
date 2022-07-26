@@ -12,6 +12,7 @@
             This library brings IOutParam&lt;out T&gt; interface and OutParam class to help developers create method parameters that lets the compiler infer the type of the generic parameter.
         </Description>
         <Authors>Fabricio Godoy</Authors>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageTags>generics;extension;implicit;parameter;param;covariant;covariance;contravariance;inference;infer</PackageTags>
         <IncludeSymbols>true</IncludeSymbols>
         <SymbolPackageFormat>snupkg</SymbolPackageFormat>
