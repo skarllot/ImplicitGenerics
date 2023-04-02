@@ -50,7 +50,7 @@ public static class ParamTest
     public static void DownCastDictionaryValuesShouldReturnValidDictionaryValues()
     {
         var dict = new Dictionary<string, object> { { "key1", "value1" }, { "key2", "value2" }, { "key3", "value3" } };
-        var result = dict.DownCastValues(OutParam.Of<string>());
+        var result = dict.DownCastValues(TypeParam.Of<string>());
 
         result.Should().ContainKeys("key1", "key2", "key3");
         result.Should().ContainValues("value1", "value2", "value3");
@@ -105,12 +105,12 @@ public static class ParamTest
 
     private static IDictionary<TKey, TOther> DownCastValues<TKey, TValue, TOther>(
         this IDictionary<TKey, TValue> dictionary,
-        IOutParam<TOther> outParam)
+        ITypeParam<TOther> typeParam)
         where TKey : notnull
         where TValue : class
         where TOther : class, TValue
     {
-        outParam.DebugIfNull();
+        typeParam.DebugIfNull();
 
         return dictionary
             .Select(pair => (pair.Key, Value: (TOther)pair.Value))

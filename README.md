@@ -1,4 +1,6 @@
-# Implicit Generics [![Nuget](https://img.shields.io/nuget/v/Raiqub.ImplicitGenerics)](https://www.nuget.org/packages/Raiqub.ImplicitGenerics)
+# Implicit Generics
+
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://raw.githubusercontent.com/EngRajabi/Enum.Source.Generator/master/LICENSE) [![Nuget](https://img.shields.io/nuget/v/Raiqub.ImplicitGenerics)](https://www.nuget.org/packages/Raiqub.ImplicitGenerics) [![Nuget](https://img.shields.io/nuget/dt/Raiqub.ImplicitGenerics?label=Nuget.org%20Downloads&style=flat-square&color=blue)](https://www.nuget.org/packages/Raiqub.ImplicitGenerics)
 
 _Provides a mechanism that allows generic type parameter to be inferred implicitly._
 
@@ -9,8 +11,12 @@ _Provides a mechanism that allows generic type parameter to be inferred implicit
 Sometimes when developing generic methods extensions it needs additional generic parameter types,
 and when any of types can not be inferred then all generic parameter types must be specified.
 
-This library brings ``IOutParam<out T>`` interface and ``OutParam`` class to help developers create method
+This library brings interfaces and factories listed below ``IOutParam<out T>`` interface and ``OutParam`` class to help developers create method
 parameters that lets the compiler infer the type of the generic parameter.
+
+- `IOutParam<out T>` interface and `OutParam` factory class for covariant parameters;
+- `IInParam<out T>` interface and `InParam` factory class for contravariant parameters;
+- `ITypeParam<out T>` interface and `TypeParam` factory class for non-variant parameters;
 
 ## Compatibility
 
@@ -96,12 +102,12 @@ And to call this method:
 IDictionary<string, string> result = dict.DownCastValues<string, object, string>();
 ```
 
-But, using the provided ``IOutParam<out T>`` interface:
+But, using the provided ``ITypeParam<out T>`` interface:
 
 ```csharp
 public static IDictionary<TKey, TOther> DownCastValues<TKey, TValue, TOther>(
     this IDictionary<TKey, TValue> dictionary,
-    IOutParam<TOther> outParam)
+    ITypeParam<TOther> typeParam)
     where TKey : notnull
     where TValue : class
     where TOther : class, TValue =>
@@ -115,7 +121,7 @@ Finally, the call is:
 ```csharp
 using Raiqub.ImplicitGenerics;
 
-IDictionary<string, string> result = dict.DownCastValues(OutParam.Of<string>());
+IDictionary<string, string> result = dict.DownCastValues(TypeParam.Of<string>());
 ```
 
 ### More examples
